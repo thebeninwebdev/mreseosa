@@ -24,6 +24,7 @@ type Project = {
   href: string;
   category: ProjectCategory;
   technologies: string[];
+  liveUrl: string
 };
 
 const projects: Project[] = [
@@ -35,6 +36,7 @@ const projects: Project[] = [
     image: "/projects/swiftdu.png",
     href: "/projects/swiftdu",
     category: "Web Apps",
+    liveUrl:"https://swiftdu.org",
     technologies: ["Next.js", "Socket.IO", "MongoDB", "Flutterwave"],
   },
   {
@@ -45,6 +47,7 @@ const projects: Project[] = [
     image: "/projects/ese-fabrics.png",
     href: "/projects/ese-fabrics",
     category: "Web Apps",
+    liveUrl: "https://esefabrics.vercel.app",
     technologies: ["Next.js", "Paystack", "Tailwind CSS", "Cloudinary"],
   },
   {
@@ -55,6 +58,7 @@ const projects: Project[] = [
     image: "/projects/hotel-manager.png",
     href: "/projects/hotel-manager-pro",
     category: "Desktop",
+    liveUrl:"https://google.com",
     technologies: ["Electron", "SQLite", "PowerSync", "TypeScript"],
   },
 ];
@@ -89,27 +93,37 @@ function SparkleIcon() {
     </svg>
   );
 }
-
 function ProjectCard({ project }: { project: Project }) {
   const visibleTechnologies = project.technologies.slice(0, 3);
-  const remainingTechnologies = project.technologies.length - 3;
 
   return (
     <article className="group overflow-hidden rounded-sm border border-white/10 bg-white/[0.015] transition duration-500 hover:-translate-y-1 hover:border-white/20">
       <div className="grid lg:grid-cols-[0.82fr_1.18fr]">
+        {/* Content */}
         <div className="order-2 flex flex-col px-6 py-7 sm:px-8 sm:py-9 lg:order-1 lg:min-h-[390px] lg:px-10 lg:py-10">
-          <span className="text-sm font-medium tracking-[0.14em] text-[#B7A98A]">
-            {project.number}
-          </span>
-<h3
-className={`$
-{headingFont.className} mt-6 text-[2.4rem]
-font-medium leading-none
-tracking-[-0.035em] text-[#f5f5f2]
-sm:text-5xl`}>
-{project.title}
-</h3>
+          <div className="flex items-start justify-between">
+            <span className="text-sm font-medium tracking-[0.14em] text-[#B7A98A]">
+              {project.number}
+            </span>
 
+            {project.liveUrl && (
+              <Link
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit ${project.title} live`}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/60 transition-all duration-300 hover:border-[#B7A98A] hover:bg-[#B7A98A]/10 hover:text-[#B7A98A]"
+              >
+                <ExternalLinkIcon />
+              </Link>
+            )}
+          </div>
+
+          <h3
+            className={`${headingFont.className} mt-6 text-[2.4rem] font-medium leading-none tracking-[-0.035em] text-[#f5f5f2] sm:text-5xl`}
+          >
+            {project.title}
+          </h3>
 
           <p className="mt-5 max-w-md text-sm leading-7 text-white/60 sm:text-base sm:leading-8">
             {project.description}
@@ -140,6 +154,7 @@ sm:text-5xl`}>
           </div>
         </div>
 
+        {/* Image */}
         <Link
           href={project.href}
           aria-label={`View ${project.title} case study`}
@@ -161,6 +176,32 @@ sm:text-5xl`}>
     </article>
   );
 }
+
+function ExternalLinkIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      className="h-5 w-5"
+      aria-hidden="true"
+    >
+      <path
+        d="M7 17L17 7"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <path
+        d="M9 7H17V15"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }
+
 
 export default function Works() {
 

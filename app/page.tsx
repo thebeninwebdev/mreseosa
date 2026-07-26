@@ -4,6 +4,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import Works from "./components/Works";
 import PortfolioMenu from "./components/MobileMenu";
 import PortfolioSections from "./components/PortfolioSections";
+import BackToTop from "./components/BackToTop";
 
 const headingFont = Cormorant_Garamond({
   subsets: ["latin"],
@@ -249,6 +250,7 @@ export default function HomePage() {
       </section>
       <Works />
       <PortfolioSections />
+      <BackToTop/>
     </main>
   );
 }
