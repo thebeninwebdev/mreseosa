@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Cormorant_Garamond, Inter } from "next/font/google";
-import Works from "./components/Works"
+import Works from "./components/Works";
 import PortfolioMenu from "./components/MobileMenu";
 import PortfolioSections from "./components/PortfolioSections";
 
@@ -12,7 +12,7 @@ const headingFont = Cormorant_Garamond({
 
 const bodyFont = Inter({
   subsets: ["latin"],
-})
+});
 
 function ArrowRightIcon() {
   return (
@@ -110,131 +110,145 @@ export default function HomePage() {
       className={`${bodyFont.className} min-h-screen bg-[#090909] text-white`}
     >
       <PortfolioMenu />
-      <section className="mx-auto flex min-h-screen w-full max-w-md flex-col px-4 pb-8 pt-20 sm:max-w-lg sm:px-8">
-        {/* Identity */}
-        <div className="flex items-center gap-4">
-          <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-sm border border-white/10 bg-neutral-800">
-            <Image
-              src="/profile.webp"
-              alt="Eseosa Osayi"
-              fill
-              priority
-              sizes="64px"
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <p className="text-xl font-medium tracking-tight text-white">
-              Eseosa Osayi
-            </p>
+      <section
+        id="home"
+        className="mx-auto w-full max-w-7xl px-4 pt-16 sm:px-8 lg:flex lg:items-center lg:px-10 lg:pb-16 lg:pt-24 xl:px-16"
+      >
+        <div className="grid w-full gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16 xl:gap-24">
+          {/* Desktop portrait */}
+          <div className="relative hidden lg:block">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-white/10 bg-neutral-900">
+              <Image
+                src="/profile.webp"
+                alt="Eseosa Osayi"
+                fill
+                priority
+                sizes="(min-width: 1280px) 520px, (min-width: 1024px) 42vw, 64px"
+                className="object-cover object-center"
+              />
 
-            <p className="mt-1 text-xs text-white/50">
-              Full-Stack Engineer • Remote
-            </p>
-          </div>
-        </div>
-
-        {/* Hero */}
-        <div className="mt-7">
-          <h1
-            className={`${headingFont.className} max-w-[360px] text-[2.4rem] font-medium leading-[1.1] tracking-[-0.045em] text-[#f5f5f2] sm:text-[5rem]`}
-          >
-            Next.js Developer
-            <br />
-            focused on
-            <br />
-            <span className="text-[#B7A98A]">AI-powered products.</span>
-          </h1>
-
-          <p className="mt-4 max-w-sm text-sm leading-7 text-white/75">
-            Production-grade software's with Next.js, Node.js and AI
-            integrations.
-          </p>
-        </div>
-        <div className="mt-6 flex flex-wrap gap-3">
-          {["5+ Years", "GMT+1", "Open to Remote"].map((chip) => (
-            <span
-              key={chip}
-              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium tracking-wide text-white/80"
-            >
-              {chip}
-            </span>
-          ))}
-        </div>
-        {/* Calls to action */}
-        <div className="mt-7 space-y-4">
-          <Link
-            href="#projects"
-            className="group flex min-h-14 w-full items-center rounded-sm bg-white px-7 text-sm text-black transition hover:bg-neutral-200 active:scale-[0.98]"
-          >
-            <div className="flex w-full items-center justify-between">
-              <span>View my work</span>
-
-              <span className="transition-transform group-hover:translate-x-1">
-                <ArrowRightIcon />
-              </span>
+              {/* Subtle image overlay */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
             </div>
-          </Link>
 
-          <Link
-            href="/resume.pdf"
-            target="_blank"
-            className="group flex min-h-14 w-full items-center rounded-sm border border-white/50 px-7 text-sm text-white transition hover:border-white hover:bg-white/5 active:scale-[0.98]"
-          >
-            <div className="flex w-full items-center justify-between">
-              <span>Download Resume</span>
-
-              <span className="transition-transform group-hover:translate-x-1">
-                <ResumeIcon />
-              </span>
+            {/* Small image caption */}
+            <div className="mt-4 flex items-center justify-between text-xs text-white/35">
+              <span>Full-Stack Engineer</span>
+              <span>GMT+1</span>
             </div>
-          </Link>
+          </div>
+
+          {/* Hero content */}
+          <div className="flex flex-col">
+            {/* Identity */}
+            <div className="flex items-center gap-4">
+              {/* Mobile portrait */}
+              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-sm border border-white/10 bg-neutral-800 lg:hidden">
+                <Image
+                  src="/profile.webp"
+                  alt="Eseosa Osayi"
+                  fill
+                  priority
+                  sizes="64px"
+                  className="object-cover"
+                />
+              </div>
+
+              <div>
+                <p className="text-xl font-medium tracking-tight text-white sm:text-2xl lg:text-xl xl:text-2xl">
+                  Eseosa Osayi
+                </p>
+
+                <p className="mt-1 text-xs text-white/50 sm:text-sm">
+                  Full-Stack Engineer • Remote
+                </p>
+              </div>
+            </div>
+
+            {/* Main headline */}
+            <div className="mt-7 lg:mt-10">
+              <h1
+                className={`${headingFont.className}
+                    max-w-[22rem]
+                        text-[3.2rem]
+                            font-medium
+                                leading-[0.94]
+                                    tracking-[-0.045em]
+                                        text-[#f5f5f2]
+                                            min-[380px]:text-[3.65rem]
+                                                sm:text-[5rem]
+                                                  `}
+                                                  >
+                                                    Next.js Developer
+                                                      <br />
+                                                        focused on
+                                                          <br />
+                                                            <span className="text-[#B7A98A]">AI-powered products.</span>
+                                                            </h1>
+
+              <p className="mt-6 max-w-lg text-sm leading-7 text-white/65 sm:text-base sm:leading-8 lg:mt-8">
+                Building production-grade software with Next.js, Node.js and AI
+                integrations.
+              </p>
+            </div>
+
+            {/* Trust signals */}
+            <div className="mt-7 grid grid-cols-3 gap-2.5 sm:flex sm:flex-wrap sm:gap-3 lg:mt-8">
+              {["5+ Years", "GMT+1", "Open to Remote"].map((item) => (
+                <span
+                  key={item}
+                  className="
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        flex min-h-11 items-center justify-center
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      rounded-full border border-white/10
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    bg-white/[0.03] px-2
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  text-center text-[0.68rem] font-medium
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                text-white/70
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              min-[390px]:px-3.5
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            min-[390px]:text-xs
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          sm:min-h-12
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        sm:px-5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   sm:text-sm
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  "
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            {/* Calls to action */}
+            <div className="mt-7 space-y-4 sm:grid sm:grid-cols-2 sm:gap-4 sm:space-y-0 lg:mt-9">
+              <Link
+                href="#projects"
+                className="group flex min-h-14 w-full items-center rounded-sm bg-white px-7 text-sm text-black transition hover:bg-neutral-200 active:scale-[0.98] sm:min-h-16"
+              >
+                <div className="flex w-full items-center justify-between">
+                  <span>View my work</span>
+
+                  <span className="transition-transform group-hover:translate-x-1">
+                    <ArrowRightIcon />
+                  </span>
+                </div>
+              </Link>
+
+              <Link
+                href="/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex min-h-14 w-full items-center rounded-sm border border-white/50 px-7 text-sm text-white transition hover:border-white hover:bg-white/5 active:scale-[0.98] sm:min-h-16"
+              >
+                <div className="flex w-full items-center justify-between">
+                  <span>Download Resume</span>
+
+                  <span className="transition-transform group-hover:translate-x-1">
+                    <ResumeIcon />
+                  </span>
+                </div>
+              </Link>
+            </div>
+          </div>
         </div>
-        {/* Social links 
-        <div className="mt-auto pt-12">
-          <nav
-            aria-label="Social links"
-            className="flex items-center justify-between rounded-full border border-white/5 bg-[#242424] px-6 py-5 text-white/90 shadow-2xl"
-          >
-            <Link
-              href="https://github.com/yourusername"
-              target="_blank"
-              aria-label="GitHub"
-              className="transition hover:scale-110 hover:text-white"
-            >
-              <GithubIcon />
-            </Link>
-
-            <Link
-              href="https://linkedin.com/in/yourusername"
-              target="_blank"
-              aria-label="LinkedIn"
-              className="transition hover:scale-110 hover:text-white"
-            >
-              <LinkedinIcon />
-            </Link>
-
-            <Link
-              href="https://youtube.com/@yourusername"
-              target="_blank"
-              aria-label="YouTube"
-              className="transition hover:scale-110 hover:text-white"
-            >
-              <YoutubeIcon />
-            </Link>
-
-            <Link
-              href="mailto:hello@mreseosa.com"
-              aria-label="Send an email"
-              className="transition hover:scale-110 hover:text-white"
-            >
-              <EmailIcon />
-            </Link>
-          </nav>
-        </div>*/}
       </section>
       <Works />
-      <PortfolioSections/>
+      <PortfolioSections />
     </main>
   );
 }

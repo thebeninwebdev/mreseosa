@@ -101,12 +101,15 @@ function ProjectCard({ project }: { project: Project }) {
           <span className="text-sm font-medium tracking-[0.14em] text-[#B7A98A]">
             {project.number}
           </span>
+<h3
+className={`$
+{headingFont.className} mt-6 text-[2.4rem]
+font-medium leading-none
+tracking-[-0.035em] text-[#f5f5f2]
+sm:text-5xl`}>
+{project.title}
+</h3>
 
-          <h3
-            className={`${headingFont.className} mt-6 text-[2.4rem] font-medium leading-none tracking-[-0.035em] text-[#f5f5f2] sm:text-5xl`}
-          >
-            {project.title}
-          </h3>
 
           <p className="mt-5 max-w-md text-sm leading-7 text-white/60 sm:text-base sm:leading-8">
             {project.description}
@@ -171,12 +174,6 @@ export default function Works() {
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-[#B7A98A]">
             My work
           </p>
-
-          <h2
-            className={`${headingFont.className} mt-4 text-[3rem] font-medium leading-[0.95] tracking-[-0.045em] text-[#f5f5f2] sm:text-6xl lg:text-7xl`}
-          >
-            Selected projects
-          </h2>
 
           <p className="mt-6 max-w-xl text-sm leading-7 text-white/60 sm:text-base sm:leading-8">
             A selection of products I&apos;ve designed and built with a focus on
