@@ -527,7 +527,7 @@ export function ContactSection() {
               </div>
 
               <Link
-                href="mailto:hello@mreseosa.com"
+                href="mailto:osayieseosa836@gmail.com"
                 className="group mt-6 flex min-h-16 w-full items-center justify-between rounded-sm bg-[#f5f5f2] px-6 text-sm font-medium text-black transition hover:bg-white active:scale-[0.99]"
               >
                 <span>Send me an email</span>
@@ -541,7 +541,7 @@ export function ContactSection() {
 
           <div className="mt-14 grid border-l border-t border-white/10 sm:grid-cols-3">
             <Link
-              href="https://github.com/yourusername"
+              href="https://github.com/thebeninwebdev"
               target="_blank"
               rel="noreferrer"
               className="group flex min-h-20 items-center justify-between border-b border-r border-white/10 px-6 text-sm text-white/55 transition hover:bg-white/[0.025] hover:text-white"
@@ -555,9 +555,8 @@ export function ContactSection() {
                 <ArrowUpRightIcon />
               </span>
             </Link>
-
             <Link
-              href="https://linkedin.com/in/yourusername"
+              href="https://linkedin.com/in/osayi-eseosa"
               target="_blank"
               rel="noreferrer"
               className="group flex min-h-20 items-center justify-between border-b border-r border-white/10 px-6 text-sm text-white/55 transition hover:bg-white/[0.025] hover:text-white"
@@ -573,7 +572,7 @@ export function ContactSection() {
             </Link>
 
             <Link
-              href="mailto:hello@mreseosa.com"
+              href="mailto:osayiesosa836@gmail.com"
               className="group flex min-h-20 items-center justify-between border-b border-r border-white/10 px-6 text-sm text-white/55 transition hover:bg-white/[0.025] hover:text-white"
             >
               <span className="flex items-center gap-3">
