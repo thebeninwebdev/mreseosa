@@ -30,20 +30,20 @@ type Project = {
 const projects: Project[] = [
   {
     number: "01",
-    title: "SwiftDU",
+    title: "SBP Hotel",
     description:
-      "Campus logistics platform connecting students with taskers for fast, reliable errands and deliveries.",
-    image: "/projects/swiftdu.png",
-    href: "/projects/swiftdu",
+      "Luxury hotel website with a premium booking experience, responsive design and elegant user interface.",
+    image: "/projects/sbp-hotel.png",
+    href: "/projects/sbp-hotel",
     category: "Web Apps",
-    liveUrl:"https://swiftdu.org",
-    technologies: ["Next.js", "Socket.IO", "MongoDB", "Flutterwave"],
+    liveUrl: "https://sbphotel.com",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB"],
   },
   {
     number: "02",
     title: "Ese Fabrics",
     description:
-      "E-commerce platform for a modern fabrics brand with seamless shopping and secure payments.",
+      "Modern e-commerce platform with secure payments, inventory management and a seamless shopping experience.",
     image: "/projects/ese-fabrics.png",
     href: "/projects/ese-fabrics",
     category: "Web Apps",
@@ -52,21 +52,16 @@ const projects: Project[] = [
   },
   {
     number: "03",
-    title: "Hotel Manager Pro",
+    title: "Winners Foundation School",
     description:
-      "Desktop application for hotel operations with bookings, guests, rooms and reporting.",
-    image: "/projects/hotel-manager.png",
-    href: "/projects/hotel-manager-pro",
-    category: "Desktop",
-    liveUrl:"https://google.com",
-    technologies: ["Electron", "SQLite", "PowerSync", "TypeScript"],
+      "Modern school website focused on admissions, communication and an engaging experience for parents and students.",
+    image: "/projects/winners-school.png",
+    href: "/projects/winners-foundation-school",
+    category: "Web Apps",
+    liveUrl: "https://winnersfoundationschools.com",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB"],
   },
 ];
-
-const filters = ["All", "Web Apps", "Desktop", "AI"] as const;
-
-type Filter = (typeof filters)[number];
-
 function ArrowRightIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
