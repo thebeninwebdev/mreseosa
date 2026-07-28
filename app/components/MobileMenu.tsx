@@ -131,12 +131,15 @@ export default function PortfolioMenu() {
       <div
         id="portfolio-navigation"
         aria-hidden={!isOpen}
-        className={`fixed inset-0 z-50 h-dvh bg-[#090909] text-white transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
-          isOpen ? "translate-y-0" : "-translate-y-full"
+        inert={!isOpen}
+        className={`fixed inset-0 z-50 h-dvh overflow-x-hidden bg-[#090909] text-white transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+          isOpen
+            ? "translate-y-0"
+            : "pointer-events-none -translate-y-full"
         }`}
       >
         <div
-          className={`${bodyFont.className} mx-auto flex h-full w-full max-w-7xl flex-col px-8 pb-8 pt-20 sm:px-12 lg:px-20`}
+          className={`${bodyFont.className} mx-auto flex h-full w-full max-w-7xl flex-col px-4 pb-5 pt-16 min-[360px]:px-6 min-[360px]:pb-6 min-[360px]:pt-20 sm:px-12 sm:pb-8 lg:px-20`}
         >
           {/* Navigation */}
           <nav
@@ -152,15 +155,15 @@ export default function PortfolioMenu() {
                   <Link
                     href={item.href}
                     onClick={closeMenu}
-                    className="group flex items-center justify-between py-5 sm:py-6"
+                    className="group flex min-w-0 items-center justify-between gap-3 py-4 min-[360px]:py-5 sm:py-6"
                   >
                     <span
-                      className={`${headingFont.className} text-[3rem] leading-none tracking-[-0.04em] text-[#f5f5f2] transition-transform duration-300 group-hover:translate-x-3 sm:text-6xl`}
+                      className={`${headingFont.className} min-w-0 text-[clamp(2.25rem,14vw,3rem)] leading-none tracking-[-0.04em] text-[#f5f5f2] transition-transform duration-300 group-hover:translate-x-3 sm:text-6xl`}
                     >
                       {item.label}
                     </span>
 
-                    <span className="text-xs tabular-nums text-white/35">
+                    <span className="shrink-0 text-xs tabular-nums text-white/35">
                       0{index + 1}
                     </span>
                   </Link>
@@ -193,7 +196,7 @@ export default function PortfolioMenu() {
               })}
             </div>
 
-            <div className="mt-7 flex items-center justify-between text-[0.65rem] uppercase tracking-[0.16em] text-white/25">
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-[0.6rem] uppercase tracking-[0.1em] text-white/25 min-[360px]:mt-7 min-[360px]:text-[0.65rem] min-[360px]:tracking-[0.16em]">
               <span>Eseosa Osayi</span>
               <span>Full-Stack Engineer</span>
             </div>
