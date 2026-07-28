@@ -23,19 +23,15 @@ const menuLinks = [
 const socialLinks = [
   {
     label: "GitHub",
-    href: "https://github.com/yourusername",
+    href: "https://github.com/thebeninwebdev",
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/yourusername",
-  },
-  {
-    label: "YouTube",
-    href: "https://youtube.com/@yourusername",
+    href: "https://linkedin.com/in/eseosa-osayi",
   },
   {
     label: "Email",
-    href: "mailto:hello@mreseosa.com",
+    href: "mailto:osayieseosa836@gmail.com",
   },
 ];
 
