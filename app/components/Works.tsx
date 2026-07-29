@@ -196,9 +196,9 @@ export default function Works() {
     >
       <div className="mx-auto w-full max-w-7xl">
         <header className="max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-[#B7A98A]">
+          <h2 className="text-xs font-medium uppercase tracking-[0.25em] text-[#B7A98A]">
             My work
-          </p>
+          </h2>
 
           <p className="mt-6 max-w-xl text-sm leading-7 text-white/60 sm:text-base sm:leading-8">
             A selection of products I&apos;ve designed and built with a focus on

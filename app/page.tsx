@@ -53,7 +53,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <p className="text-[1.35rem] font-medium tracking-tight">Eseosa Osayi</p>
-                  <p className="mt-1 text-[0.7rem] tracking-[0.04em] text-white/45">
+                  <p className="mt-1 text-[0.7rem] tracking-[0.04em] text-white/55">
                     Full-Stack Engineer · Remote
                   </p>
                 </div>

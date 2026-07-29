@@ -168,7 +168,7 @@ export default function PortfolioMenu() {
                       {item.label}
                     </span>
 
-                    <span className="shrink-0 text-xs tabular-nums text-white/35">
+                    <span className="shrink-0 text-xs tabular-nums text-white/50">
                       0{index + 1}
                     </span>
                   </Link>
@@ -179,7 +179,7 @@ export default function PortfolioMenu() {
 
           {/* Menu footer */}
           <footer className="border-t border-white/10 pt-6">
-            <p className="mb-4 text-[0.65rem] uppercase tracking-[0.22em] text-white/35">
+            <p className="mb-4 text-[0.65rem] uppercase tracking-[0.22em] text-white/50">
               Find me online
             </p>
 
@@ -201,7 +201,7 @@ export default function PortfolioMenu() {
               })}
             </div>
 
-            <div className="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-[0.6rem] uppercase tracking-[0.1em] text-white/25 min-[360px]:mt-7 min-[360px]:text-[0.65rem] min-[360px]:tracking-[0.16em]">
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-[0.6rem] uppercase tracking-[0.1em] text-white/50 min-[360px]:mt-7 min-[360px]:text-[0.65rem] min-[360px]:tracking-[0.16em]">
               <span>Eseosa Osayi</span>
               <span>Full-Stack Engineer</span>
             </div>

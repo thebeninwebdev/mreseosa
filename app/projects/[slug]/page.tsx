@@ -98,7 +98,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <span>Back to projects</span>
           </Link>
 
-          <span className="text-xs uppercase tracking-[0.2em] text-white/30">
+          <span className="text-xs uppercase tracking-[0.2em] text-white/50">
             Case study
           </span>
         </div>
@@ -231,7 +231,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 function ProjectDetail({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-[0.65rem] uppercase tracking-[0.18em] text-white/30">
+      <p className="text-[0.65rem] uppercase tracking-[0.18em] text-white/50">
         {label}
       </p>
 
