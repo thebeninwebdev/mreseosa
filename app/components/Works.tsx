@@ -236,6 +236,7 @@ export default function Works() {
 
             <Link
               href="#contact"
+              prefetch={false}
               className="group flex min-h-14 w-full items-center justify-between rounded-sm border border-[#B7A98A]/60 px-6 text-sm text-white transition hover:border-[#B7A98A] hover:bg-[#B7A98A]/5 sm:w-56"
             >
               <span>Contact me</span>

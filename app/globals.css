@@ -29,6 +29,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.heading-font {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
 html {
   scroll-behavior: smooth;
 }

@@ -591,7 +591,11 @@ export function ContactSection() {
           <p>© {new Date().getFullYear()} Eseosa Osayi</p>
 
           <div className="flex items-center gap-6">
-            <Link href="#home" className="transition hover:text-white/65">
+            <Link
+              href="#home"
+              prefetch={false}
+              className="transition hover:text-white/65"
+            >
               Back to top
             </Link>
 

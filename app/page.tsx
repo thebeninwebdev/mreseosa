@@ -45,7 +45,6 @@ export default function HomePage() {
                     src="/profile.webp"
                     alt="Eseosa Osayi"
                     fill
-                    preload
                     sizes="64px"
                     quality={65}
                     className="object-cover"
@@ -93,6 +92,7 @@ export default function HomePage() {
               <div className="mt-7 space-y-3 sm:grid sm:max-w-[39rem] sm:grid-cols-2 sm:gap-4 sm:space-y-0 lg:mt-6">
                 <Link
                   href="#projects"
+                  prefetch={false}
                   className="group flex min-h-14 w-full items-center rounded-sm bg-[#f4f2ee] px-7 text-sm font-medium text-black transition hover:bg-white active:scale-[0.98] sm:min-h-16"
                 >
                   <span className="flex w-full items-center justify-between">
@@ -112,7 +112,6 @@ export default function HomePage() {
                   src="/profile.webp"
                   alt="Eseosa Osayi"
                   fill
-                  loading="eager"
                   sizes="(min-width: 1440px) 580px, 42vw"
                   quality={65}
                   className="object-cover object-center"

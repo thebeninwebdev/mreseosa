@@ -103,6 +103,7 @@ export default function PortfolioMenu() {
               <Link
                 key={item.label}
                 href={item.href}
+                prefetch={false}
                 className="relative flex items-center px-6 text-sm text-white/60 transition hover:text-white"
               >
                 {item.label}
@@ -159,6 +160,7 @@ export default function PortfolioMenu() {
                 >
                   <Link
                     href={item.href}
+                    prefetch={false}
                     onClick={closeMenu}
                     className="group flex min-w-0 items-center justify-between gap-3 py-4 min-[360px]:py-5 sm:py-6"
                   >
