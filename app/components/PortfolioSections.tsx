@@ -156,7 +156,7 @@ export function AboutSection() {
 
             <div className="mt-10 max-w-2xl space-y-6 text-sm leading-7 text-white/60 sm:text-base sm:leading-8">
               <p>
-                I&apos;m a Full-Stack Engineer with over five years of
+                I&apos;m a Full-Stack Engineer with over four years of
                 professional experience building production-ready software.
               </p>
 
@@ -201,7 +201,7 @@ export function AboutSection() {
                 <p
                   className={`${headingFont.className} text-3xl text-[#f5f5f2]`}
                 >
-                  5+
+                  4+
                 </p>
 
                 <p className="mt-2 text-xs leading-5 text-white/45">

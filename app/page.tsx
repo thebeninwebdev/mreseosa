@@ -22,7 +22,7 @@ function ArrowRightIcon() {
 }
 
 const trustSignals = [
-  { label: "5+ Years", detail: "Experience" },
+  { label: "4+ Years", detail: "Experience" },
   { label: "GMT+1", detail: "West Africa Time" },
   { label: "Open to Remote", detail: "Worldwide" },
 ];
