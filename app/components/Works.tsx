@@ -126,6 +126,7 @@ function ProjectCard({ project }: { project: Project }) {
           <div className="mt-8 lg:mt-auto lg:pt-10">
             <Link
               href={project.href}
+              prefetch={false}
               className="inline-flex items-center gap-7 border-b border-[#B7A98A]/50 pb-2 text-sm text-white transition hover:border-[#B7A98A] hover:text-[#B7A98A]"
             >
               <span>View case study</span>
@@ -140,6 +141,7 @@ function ProjectCard({ project }: { project: Project }) {
         {/* Image */}
         <Link
           href={project.href}
+          prefetch={false}
           aria-label={`View ${project.title} case study`}
           className="order-1 block overflow-hidden border-b border-white/10 lg:order-2 lg:border-b-0 lg:border-l"
         >

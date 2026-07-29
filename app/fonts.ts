@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cormorant_Garamond } from "next/font/google";
 
 export const headingFont = Cormorant_Garamond({
   subsets: ["latin"],
@@ -6,7 +6,5 @@ export const headingFont = Cormorant_Garamond({
   display: "swap",
 });
 
-export const bodyFont = Inter({
-  subsets: ["latin"],
-  display: "swap",
-});
+// Avoid a second font download and parse on performance-constrained devices.
+export const bodyFont = { className: "body-font" } as const;

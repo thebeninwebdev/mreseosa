@@ -82,7 +82,7 @@ export default function HomePage() {
                 {trustSignals.map((signal) => (
                   <div
                     key={signal.label}
-                    className="flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-black/20 px-2 text-center text-[0.65rem] text-white/75 backdrop-blur-sm min-[390px]:px-3 min-[390px]:text-xs sm:min-h-14 sm:px-5 sm:text-sm"
+                    className="flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-black/40 px-2 text-center text-[0.65rem] text-white/75 min-[390px]:px-3 min-[390px]:text-xs sm:min-h-14 sm:px-5 sm:text-sm"
                     title={signal.detail}
                   >
                     <span>{signal.label}</span>
