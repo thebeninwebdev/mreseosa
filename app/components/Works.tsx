@@ -148,8 +148,8 @@ function ProjectCard({ project }: { project: Project }) {
               src={project.image}
               alt={`${project.title} project preview`}
               fill
-              sizes="(max-width: 1024px) 100vw, 58vw"
-              quality={65}
+              sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 4rem), (max-width: 1440px) 55vw, 740px"
+              quality={60}
               className="object-cover transition duration-700 group-hover:scale-[1.025]"
             />
 

@@ -47,6 +47,7 @@ export default function HomePage() {
                     fill
                     preload
                     sizes="64px"
+                    quality={65}
                     className="object-cover"
                   />
                 </div>
@@ -63,9 +64,9 @@ export default function HomePage() {
               </p>
 
               <h1
-                className={`${headingFont.className} mt-6 max-w-[52rem] text-[3.35rem] font-medium leading-[0.91] tracking-[-0.045em] text-[#f4f2ee] min-[390px]:text-[3.8rem] sm:text-[5.2rem] lg:mt-5 lg:text-[clamp(3.7rem,5.5vw,5.4rem)]`}
+                className={`${headingFont.className} mt-6 max-w-[52rem] text-[clamp(2.25rem,11.5vw,4.6rem)] font-medium leading-[0.91] tracking-[-0.045em] text-[#f4f2ee] lg:mt-5 lg:text-[clamp(3.7rem,5.5vw,5.4rem)]`}
               >
-                Next.js Developer
+                <span className="whitespace-nowrap">Next.js Developer</span>
                 <br />
                 focused on
                 <br />
@@ -113,6 +114,7 @@ export default function HomePage() {
                   fill
                   loading="eager"
                   sizes="(min-width: 1440px) 580px, 42vw"
+                  quality={65}
                   className="object-cover object-center"
                 />
                 <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10" />
