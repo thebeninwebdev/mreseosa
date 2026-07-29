@@ -10,19 +10,13 @@ export default function BackToTop() {
 
     if (!trigger) return;
 
-    const handleScroll = () => {
-      const rect = trigger.getBoundingClientRect();
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.boundingClientRect.top < 0),
+      { threshold: 0 },
+    );
 
-      // Show once the top of the experience section
-      // has reached the top of the viewport.
-      setVisible(rect.top <= 0);
-    };
-
-    handleScroll(); // Initial check
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => window.removeEventListener("scroll", handleScroll);
+    observer.observe(trigger);
+    return () => observer.disconnect();
   }, []);
 
   function scrollToTop() {

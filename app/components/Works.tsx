@@ -1,18 +1,6 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
-import { Cormorant_Garamond, Inter } from "next/font/google";
-
-const headingFont = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["500", "600"],
-});
-
-const bodyFont = Inter({
-  subsets: ["latin"],
-});
+import { bodyFont, headingFont } from "@/app/fonts";
 
 type ProjectCategory = "Web Apps" | "Desktop" | "AI";
 
@@ -161,6 +149,7 @@ function ProjectCard({ project }: { project: Project }) {
               alt={`${project.title} project preview`}
               fill
               sizes="(max-width: 1024px) 100vw, 58vw"
+              quality={65}
               className="object-cover transition duration-700 group-hover:scale-[1.025]"
             />
 

@@ -2,21 +2,13 @@
 
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
-import { Cormorant_Garamond, Inter } from "next/font/google";
-
-const headingFont = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["500", "600"],
-});
-
-const bodyFont = Inter({
-  subsets: ["latin"],
-});
+import { bodyFont, headingFont } from "@/app/fonts";
 
 const menuLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Works", href: "#projects" },
+  { label: "Experience", href: "#experience" },
   { label: "Contact me", href: "#contact" },
 ];
 
@@ -101,11 +93,23 @@ export default function PortfolioMenu() {
     <>
       {/* Minimal menu trigger */}
       <header
-        className={`${bodyFont.className} fixed inset-x-0 top-0 z-[60] border-b border-white/10 bg-white/[0.03] backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+        className={`${bodyFont.className} fixed inset-x-0 top-0 z-[60] border-b border-white/10 bg-[#090909]/80 backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] lg:left-7 lg:right-7 lg:top-5 lg:rounded-xl lg:border ${
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="relative mx-auto flex h-12 w-full max-w-7xl items-center justify-center">
+        <div className="relative mx-auto flex h-12 w-full max-w-[90rem] items-center justify-center px-4 lg:h-[4.5rem] lg:px-8">
+          <nav className="hidden items-stretch self-stretch lg:flex" aria-label="Desktop navigation">
+            {menuLinks.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="relative flex items-center px-6 text-sm text-white/60 transition hover:text-white"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
           <button
             type="button"
             onClick={() => setIsOpen((current) => !current)}
@@ -120,6 +124,7 @@ export default function PortfolioMenu() {
               transition-colors duration-300
               w-full h-full
               relative
+              lg:hidden
             "
           >
             {isOpen ? "Close" : "Menu"}
@@ -132,7 +137,7 @@ export default function PortfolioMenu() {
         id="portfolio-navigation"
         aria-hidden={!isOpen}
         inert={!isOpen}
-        className={`fixed inset-0 z-50 h-dvh overflow-x-hidden bg-[#090909] text-white transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+        className={`fixed inset-0 z-50 h-dvh overflow-x-hidden bg-[#090909] text-white transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] lg:hidden ${
           isOpen
             ? "translate-y-0"
             : "pointer-events-none -translate-y-full"
