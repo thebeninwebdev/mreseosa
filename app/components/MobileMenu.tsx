@@ -6,8 +6,8 @@ import { bodyFont, headingFont } from "@/app/fonts";
 
 const menuLinks = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
   { label: "Works", href: "#projects" },
+  { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Contact me", href: "#contact" },
 ];

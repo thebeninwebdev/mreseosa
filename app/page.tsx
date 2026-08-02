@@ -114,6 +114,7 @@ export default function HomePage() {
                   fill
                   sizes="(min-width: 1440px) 580px, 42vw"
                   quality={65}
+                  fetchPriority="high"
                   className="object-cover object-center"
                 />
                 <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10" />
