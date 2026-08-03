@@ -93,7 +93,7 @@ export default function PortfolioMenu() {
     <>
       {/* Minimal menu trigger */}
       <header
-        className={`${bodyFont.className} fixed inset-x-0 top-0 z-[60] border-b border-white/10 bg-[#090909]/95 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] lg:left-7 lg:right-7 lg:top-5 lg:rounded-xl lg:border ${
+        className={`${bodyFont.className} site-header-enter fixed inset-x-0 top-0 z-[60] border-b border-white/10 bg-[#090909]/95 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] lg:left-7 lg:right-7 lg:top-5 lg:rounded-xl lg:border ${
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >

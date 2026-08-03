@@ -6,6 +6,7 @@ import PortfolioMenu from "./components/MobileMenu";
 import PortfolioSections from "./components/PortfolioSections";
 import BackToTop from "./components/BackToTop";
 import ResumeViewer from "./components/ResumeViewer";
+import ScrollReveals from "./components/ScrollReveals";
 
 function ArrowRightIcon() {
   return (
@@ -31,6 +32,7 @@ export default function HomePage() {
   return (
     <main className={`${bodyFont.className} min-h-screen bg-[#090909] text-white`}>
       <PortfolioMenu />
+      <ScrollReveals />
 
       <section
         id="home"
@@ -39,7 +41,7 @@ export default function HomePage() {
         <div className="relative mx-auto flex w-full max-w-[90rem] flex-col lg:min-h-[calc(100dvh-9.5rem)]">
           <div className="grid flex-1 items-center gap-10 lg:grid-cols-[1.12fr_0.88fr] lg:gap-8">
             <div className="relative z-10 flex flex-col lg:pb-12">
-              <div className="flex items-center gap-4 lg:hidden">
+              <div className="hero-reveal hero-reveal-1 flex items-center gap-4 lg:hidden">
                 <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-[#c7a66d]/30 bg-neutral-800">
                   <Image
                     src="/profile.webp"
@@ -47,6 +49,7 @@ export default function HomePage() {
                     fill
                     sizes="64px"
                     quality={65}
+                    loading="eager"
                     className="object-cover"
                   />
                 </div>
@@ -58,12 +61,12 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <p className="hidden text-xs font-medium uppercase tracking-[0.16em] text-[#c7a66d] lg:block lg:text-sm">
+              <p className="hero-reveal hero-reveal-1 hidden text-xs font-medium uppercase tracking-[0.16em] text-[#c7a66d] lg:block lg:text-sm">
                 Full-Stack Engineer <span className="px-1 text-[#8d724e]">•</span> Remote
               </p>
 
               <h1
-                className={`${headingFont.className} mt-6 max-w-[52rem] text-[clamp(2.25rem,11.5vw,4.6rem)] font-medium leading-[0.91] tracking-[-0.045em] text-[#f4f2ee] lg:mt-5 lg:text-[clamp(3.7rem,5.5vw,5.4rem)]`}
+                className={`${headingFont.className} hero-reveal hero-reveal-2 mt-6 max-w-[52rem] text-[clamp(2.25rem,11.5vw,4.6rem)] font-medium leading-[0.91] tracking-[-0.045em] text-[#f4f2ee] lg:mt-5 lg:text-[clamp(3.7rem,5.5vw,5.4rem)]`}
               >
                 <span className="whitespace-nowrap">Next.js Developer</span>
                 <br />
@@ -72,12 +75,12 @@ export default function HomePage() {
                 <span className="text-[#a98f69]">AI-powered products.</span>
               </h1>
 
-              <p className="mt-6 max-w-xl text-sm leading-7 text-white/60 sm:text-base sm:leading-8 lg:mt-5 lg:text-[1.05rem]">
+              <p className="hero-reveal hero-reveal-3 mt-6 max-w-xl text-sm leading-7 text-white/60 sm:text-base sm:leading-8 lg:mt-5 lg:text-[1.05rem]">
                 Building production-grade software with Next.js,
                 <br className="hidden sm:block" /> Node.js and AI integrations.
               </p>
 
-              <div className="mt-7 grid grid-cols-3 gap-2.5 sm:flex sm:flex-wrap sm:gap-3 lg:mt-6">
+              <div className="hero-reveal hero-reveal-4 mt-7 grid grid-cols-3 gap-2.5 sm:flex sm:flex-wrap sm:gap-3 lg:mt-6">
                 {trustSignals.map((signal) => (
                   <div
                     key={signal.label}
@@ -89,7 +92,7 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <div className="mt-7 space-y-3 sm:grid sm:max-w-[39rem] sm:grid-cols-2 sm:gap-4 sm:space-y-0 lg:mt-6">
+              <div className="hero-reveal hero-reveal-5 mt-7 space-y-3 sm:grid sm:max-w-[39rem] sm:grid-cols-2 sm:gap-4 sm:space-y-0 lg:mt-6">
                 <Link
                   href="#projects"
                   prefetch={false}
@@ -106,7 +109,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative hidden h-[min(66dvh,38rem)] min-h-[30rem] self-center lg:block">
+            <div className="hero-portrait hero-reveal hero-reveal-3 relative hidden h-[min(66dvh,38rem)] min-h-[30rem] self-center lg:block">
               <div className="absolute inset-x-0 bottom-0 top-0 overflow-hidden">
                 <Image
                   src="/profile.webp"
@@ -114,6 +117,7 @@ export default function HomePage() {
                   fill
                   sizes="(min-width: 1440px) 580px, 42vw"
                   quality={65}
+                  loading="eager"
                   fetchPriority="high"
                   className="object-cover object-center"
                 />

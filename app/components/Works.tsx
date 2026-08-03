@@ -80,7 +80,7 @@ function ProjectCard({ project }: { project: Project }) {
   const visibleTechnologies = project.technologies.slice(0, 3);
 
   return (
-    <article className="group overflow-hidden rounded-sm border border-white/10 bg-white/[0.015] transition duration-500 hover:-translate-y-1 hover:border-white/20">
+    <article data-work-reveal className="group overflow-hidden rounded-sm border border-white/10 bg-white/[0.015] transition duration-500 hover:-translate-y-1 hover:border-white/20">
       <div className="grid lg:grid-cols-[0.82fr_1.18fr]">
         {/* Content */}
         <div className="order-2 flex flex-col px-6 py-7 sm:px-8 sm:py-9 lg:order-1 lg:min-h-[390px] lg:px-10 lg:py-10">
@@ -197,7 +197,7 @@ export default function Works() {
       className={`${bodyFont.className} bg-[#090909] px-4 py-24 text-white sm:px-8 sm:py-32`}
     >
       <div className="mx-auto w-full max-w-7xl">
-        <header className="max-w-2xl">
+        <header data-work-reveal className="max-w-2xl">
           <h2 className="text-xs font-medium uppercase tracking-[0.25em] text-[#B7A98A]">
             My work
           </h2>
@@ -214,7 +214,7 @@ export default function Works() {
           ))}
         </div>
 
-        <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] px-6 py-7 sm:px-9 sm:py-9">
+        <div data-work-reveal className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] px-6 py-7 sm:px-9 sm:py-9">
           <div className="flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-start gap-4">
               <span className="mt-1 shrink-0 text-[#B7A98A]">
