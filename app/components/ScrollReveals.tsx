@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { animate, inView } from "motion";
 
 export default function ScrollReveals() {
   useEffect(() => {
@@ -15,46 +16,43 @@ export default function ScrollReveals() {
       document.querySelectorAll<HTMLElement>("#projects [data-work-reveal]"),
     );
     const targets = [...sectionContent, ...workContent];
-    const cleanupTimers: number[] = [];
+    const revealed = new WeakSet<HTMLElement>();
 
-    targets.forEach((target) => target.classList.add("reveal-pending"));
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-
-          const target = entry.target as HTMLElement;
-          const finishReveal = () => {
-            target.classList.remove("reveal-pending", "reveal-visible");
-          };
-
-          target.classList.add("reveal-visible");
-          target.addEventListener("transitionend", finishReveal, { once: true });
-          cleanupTimers.push(window.setTimeout(finishReveal, 1350));
-          observer.unobserve(target);
-        });
-      },
-      {
-        // Begin near the lower quarter so the motion is underway before reading.
-        rootMargin: "0px 0px -22% 0px",
-        threshold: 0.01,
-      },
-    );
-
-    // Give the browser a painted starting frame before transitioning to visible.
-    let secondFrame = 0;
-    const firstFrame = window.requestAnimationFrame(() => {
-      secondFrame = window.requestAnimationFrame(() => {
-        targets.forEach((target) => observer.observe(target));
-      });
+    targets.forEach((target) => {
+      const isWork = target.matches("#projects [data-work-reveal]");
+      target.style.opacity = "0";
+      target.style.transform = isWork
+        ? "translateY(32px) scale(0.99)"
+        : "translateY(24px)";
     });
 
+    const stopObserving = inView(
+      targets,
+      (target) => {
+        const element = target as HTMLElement;
+        if (revealed.has(element)) return;
+        revealed.add(element);
+
+        const controls = animate(
+          element,
+          { opacity: 1, transform: "translateY(0px) scale(1)" },
+          { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+        );
+
+        controls.then(() => {
+          element.style.removeProperty("opacity");
+          element.style.removeProperty("transform");
+        });
+      },
+      { amount: 0.15, margin: "0px 0px -8% 0px" },
+    );
+
     return () => {
-      observer.disconnect();
-      window.cancelAnimationFrame(firstFrame);
-      window.cancelAnimationFrame(secondFrame);
-      cleanupTimers.forEach(window.clearTimeout);
+      stopObserving();
+      targets.forEach((target) => {
+        target.style.removeProperty("opacity");
+        target.style.removeProperty("transform");
+      });
     };
   }, []);
 
