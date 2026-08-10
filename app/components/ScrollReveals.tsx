@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { animate, inView } from "motion";
 
 export default function ScrollReveals() {
   useEffect(() => {
@@ -17,6 +16,7 @@ export default function ScrollReveals() {
     );
     const targets = [...sectionContent, ...workContent];
     const revealed = new WeakSet<HTMLElement>();
+    const runningAnimations = new Set<Animation>();
 
     targets.forEach((target) => {
       const isWork = target.matches("#projects [data-work-reveal]");
@@ -26,29 +26,56 @@ export default function ScrollReveals() {
         : "translateY(24px)";
     });
 
-    const stopObserving = inView(
-      targets,
-      (target) => {
-        const element = target as HTMLElement;
-        if (revealed.has(element)) return;
-        revealed.add(element);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
 
-        const controls = animate(
-          element,
-          { opacity: 1, transform: "translateY(0px) scale(1)" },
-          { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-        );
+          const element = entry.target as HTMLElement;
+          if (revealed.has(element)) return;
 
-        controls.then(() => {
-          element.style.removeProperty("opacity");
-          element.style.removeProperty("transform");
+          revealed.add(element);
+          observer.unobserve(element);
+
+          const initialTransform = element.matches(
+            "#projects [data-work-reveal]",
+          )
+            ? "translateY(32px) scale(0.99)"
+            : "translateY(24px) scale(1)";
+
+          const animation = element.animate(
+            [
+              { opacity: 0, transform: initialTransform },
+              { opacity: 1, transform: "translateY(0px) scale(1)" },
+            ],
+            {
+              duration: 700,
+              easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+              fill: "forwards",
+            },
+          );
+
+          runningAnimations.add(animation);
+          animation.finished
+            .then(() => {
+              element.style.removeProperty("opacity");
+              element.style.removeProperty("transform");
+              animation.cancel();
+              runningAnimations.delete(animation);
+            })
+            .catch(() => {
+              runningAnimations.delete(animation);
+            });
         });
       },
-      { amount: 0.15, margin: "0px 0px -8% 0px" },
+      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
     );
 
+    targets.forEach((target) => observer.observe(target));
+
     return () => {
-      stopObserving();
+      observer.disconnect();
+      runningAnimations.forEach((animation) => animation.cancel());
       targets.forEach((target) => {
         target.style.removeProperty("opacity");
         target.style.removeProperty("transform");

@@ -64,18 +64,6 @@ function ArrowRightIcon() {
   );
 }
 
-function SparkleIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
-      <path
-        d="M12 2C12.6 7.4 16.6 11.4 22 12C16.6 12.6 12.6 16.6 12 22C11.4 16.6 7.4 12.6 2 12C7.4 11.4 11.4 7.4 12 2Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 function ProjectCard({ project }: { project: Project }) {
   const visibleTechnologies = project.technologies.slice(0, 3);
 
@@ -127,6 +115,7 @@ function ProjectCard({ project }: { project: Project }) {
             <Link
               href={project.href}
               prefetch={false}
+              aria-label={`View ${project.title} case study`}
               className="inline-flex items-center gap-7 border-b border-[#B7A98A]/50 pb-2 text-sm text-white transition hover:border-[#B7A98A] hover:text-[#B7A98A]"
             >
               <span>View case study</span>
@@ -217,9 +206,6 @@ export default function Works() {
         <div data-work-reveal className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] px-6 py-7 sm:px-9 sm:py-9">
           <div className="flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-start gap-4">
-              <span className="mt-1 shrink-0 text-[#B7A98A]">
-                <SparkleIcon />
-              </span>
 
               <div>
                 <h3

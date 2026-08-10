@@ -37,6 +37,11 @@ html {
   scroll-behavior: smooth;
 }
 
+:focus-visible {
+  outline: 2px solid #c7a66d;
+  outline-offset: 4px;
+}
+
 section[id] {
   scroll-margin-top: 5.75rem;
 }
@@ -52,14 +57,12 @@ main > section:not(#home) {
   contain-intrinsic-size: auto 1000px;
 }
 
-/* Lightweight first-view motion: opacity and transform stay on the compositor. */
+/* Lightweight first-view motion keeps the hero paint-visible for a fast LCP. */
 @keyframes hero-reveal {
   from {
-    opacity: 0;
     transform: translate3d(0, 24px, 0);
   }
   to {
-    opacity: 1;
     transform: translate3d(0, 0, 0);
   }
 }
@@ -77,13 +80,13 @@ main > section:not(#home) {
 
 .hero-reveal,
 .site-header-enter {
-  animation-duration: 1200ms;
   animation-fill-mode: backwards;
   animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .hero-reveal {
   animation-name: hero-reveal;
+  animation-duration: 900ms;
 }
 
 .site-header-enter {
@@ -91,11 +94,11 @@ main > section:not(#home) {
   animation-duration: 1000ms;
 }
 
-.hero-reveal-1 { animation-delay: 120ms; }
-.hero-reveal-2 { animation-delay: 280ms; }
-.hero-reveal-3 { animation-delay: 440ms; }
-.hero-reveal-4 { animation-delay: 600ms; }
-.hero-reveal-5 { animation-delay: 760ms; }
+.hero-reveal-1 { animation-delay: 80ms; }
+.hero-reveal-2 { animation-delay: 150ms; }
+.hero-reveal-3 { animation-delay: 220ms; }
+.hero-reveal-4 { animation-delay: 290ms; }
+.hero-reveal-5 { animation-delay: 360ms; }
 
 .hero-portrait img {
   transition: transform 1000ms cubic-bezier(0.65, 0, 0.35, 1);

@@ -108,7 +108,7 @@ export const projects: Project[] = [
     year: "2022",
     duration: "Ongoing",
     website: "https://winnersfoundationschools.com",
-    coverImage: "/projects/winners-foundation-school.png",
+    coverImage: "/projects/winners-school.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB"],
     challenge:
       "The school required a modern website that reflected its brand while making admissions, school information and communication more accessible.",

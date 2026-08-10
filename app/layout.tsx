@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 
 const siteUrl = "https://mreseosa.space";
+const isVercelDeployment = process.env.VERCEL === "1";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Portfolio of Eseosa Osayi, a Nigerian Full-Stack Web Developer specializing in Next.js, TypeScript, React, Node.js and MongoDB. Explore projects, experience and modern web applications.",
+    "Portfolio of Eseosa Osayi, a Nigerian full-stack developer building production-ready Next.js products and AI-powered web applications.",
 
   keywords: [
     "Eseosa Osayi",
@@ -47,14 +48,6 @@ export const metadata: Metadata = {
     title: "Eseosa Osayi | Full-Stack Web Developer",
     description:
       "Building high-performance, scalable and thoughtfully designed web applications with Next.js, TypeScript and modern web technologies.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Eseosa Osayi Portfolio",
-      },
-    ],
   },
 
   twitter: {
@@ -62,7 +55,6 @@ export const metadata: Metadata = {
     title: "Eseosa Osayi | Full-Stack Web Developer",
     description:
       "Building modern web applications with Next.js, React, TypeScript and Node.js.",
-    images: ["/og-image.png"],
   },
 
   alternates: {
@@ -77,12 +69,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="h-full antialiased"
-    >
-      <body className="min-h-full flex flex-col">{children}
-      <Analytics/>
+    <html lang="en" className="h-full antialiased">
+      <body className="flex min-h-full flex-col">
+        {children}
+        {isVercelDeployment && <Analytics />}
       </body>
     </html>
   );

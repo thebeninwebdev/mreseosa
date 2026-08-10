@@ -455,9 +455,9 @@ export function TechnologiesSection() {
               className="min-h-72 border-b border-r border-white/10 p-6 transition duration-300 hover:bg-white/[0.025] sm:p-8"
             >
               <div className="flex items-center justify-between">
-                <p className="text-xs font-medium uppercase tracking-[0.18em] text-[#B7A98A]">
+                <h3 className="text-xs font-medium uppercase tracking-[0.18em] text-[#B7A98A]">
                   {group.title}
-                </p>
+                </h3>
 
                 <span className="text-xs text-white/50">0{index + 1}</span>
               </div>
@@ -556,7 +556,7 @@ export function ContactSection() {
               </span>
             </Link>
             <Link
-              href="https://linkedin.com/in/osayi-eseosa"
+              href="https://linkedin.com/in/eseosa-osayi-23a9422b2"
               target="_blank"
               rel="noreferrer"
               className="group flex min-h-20 items-center justify-between border-b border-r border-white/10 px-6 text-sm text-white/55 transition hover:bg-white/[0.025] hover:text-white"
@@ -572,7 +572,7 @@ export function ContactSection() {
             </Link>
 
             <Link
-              href="mailto:osayiesosa836@gmail.com"
+              href="mailto:osayieseosa836@gmail.com"
               className="group flex min-h-20 items-center justify-between border-b border-r border-white/10 px-6 text-sm text-white/55 transition hover:bg-white/[0.025] hover:text-white"
             >
               <span className="flex items-center gap-3">

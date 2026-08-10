@@ -20,23 +20,31 @@ export default function BackToTop() {
   }, []);
 
   function scrollToTop() {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: prefersReducedMotion ? "auto" : "smooth",
     });
   }
 
   return (
     <button
+      type="button"
       onClick={scrollToTop}
       aria-label="Back to top"
+      aria-hidden={!visible}
+      inert={!visible}
+      tabIndex={visible ? 0 : -1}
       className={`
         fixed bottom-8 right-6 z-50
         flex h-12 w-12 items-center justify-center
         border border-white/10
         bg-[#090909]
         text-white/60
-        transition-all duration-500
+        transition duration-500 motion-reduce:transition-none
         hover:border-[#B7A98A]
         hover:text-[#B7A98A]
         ${

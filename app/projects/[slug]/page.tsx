@@ -6,6 +6,8 @@ import type { Metadata } from "next";
 import { headingFont, bodyFont } from "@/app/fonts";
 import { getProjectBySlug, projects } from "@/data/projects";
 
+const siteUrl = "https://mreseosa.space";
+
 type ProjectPageProps = {
   params: Promise<{
     slug: string;
@@ -31,10 +33,27 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${project.title} — Eseosa Osayi`,
+    title: project.title,
     description: project.summary,
+    alternates: {
+      canonical: `/projects/${project.slug}`,
+    },
     openGraph: {
-      title: `${project.title} — Eseosa Osayi`,
+      type: "article",
+      url: `${siteUrl}/projects/${project.slug}`,
+      siteName: "Eseosa Osayi Portfolio",
+      title: `${project.title} | Eseosa Osayi`,
+      description: project.summary,
+      images: [
+        {
+          url: project.coverImage,
+          alt: `${project.title} project preview`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | Eseosa Osayi`,
       description: project.summary,
       images: [project.coverImage],
     },
@@ -132,7 +151,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               src={project.coverImage}
               alt={`${project.title} product preview`}
               fill
-              priority
+              preload
               sizes="(max-width: 1280px) 100vw, 1280px"
               className="object-cover"
             />

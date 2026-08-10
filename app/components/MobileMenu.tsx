@@ -19,7 +19,7 @@ const socialLinks = [
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/eseosa-osayi",
+    href: "https://linkedin.com/in/eseosa-osayi-23a9422b2",
   },
   {
     label: "Email",
@@ -93,7 +93,8 @@ export default function PortfolioMenu() {
     <>
       {/* Minimal menu trigger */}
       <header
-        className={`${bodyFont.className} site-header-enter fixed inset-x-0 top-0 z-[60] border-b border-white/10 bg-[#090909]/95 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] lg:left-7 lg:right-7 lg:top-5 lg:rounded-xl lg:border ${
+        onFocusCapture={() => setIsVisible(true)}
+        className={`${bodyFont.className} site-header-enter fixed inset-x-0 top-0 z-[60] border-b border-white/10 bg-[#090909]/95 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] motion-reduce:transition-none lg:left-7 lg:right-7 lg:top-5 lg:rounded-xl lg:border ${
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
@@ -138,7 +139,7 @@ export default function PortfolioMenu() {
         id="portfolio-navigation"
         aria-hidden={!isOpen}
         inert={!isOpen}
-        className={`fixed inset-0 z-50 h-dvh overflow-x-hidden bg-[#090909] text-white transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] lg:hidden ${
+        className={`fixed inset-0 z-50 h-dvh overflow-x-hidden bg-[#090909] text-white transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] motion-reduce:transition-none lg:hidden ${
           isOpen
             ? "translate-y-0"
             : "pointer-events-none -translate-y-full"
