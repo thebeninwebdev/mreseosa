@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { bodyFont } from "./fonts";
-import { heroFont } from "./hero-font";
+import { bodyFont, headingFont } from "./fonts";
 import Works from "./components/Works";
 import PortfolioMenu from "./components/MobileMenu";
 import PortfolioSections from "./components/PortfolioSections";
@@ -67,12 +66,12 @@ export default function HomePage() {
               </p>
 
               <h1
-                className={`${heroFont.className} hero-reveal hero-reveal-2 mt-7 max-w-[52rem] text-[clamp(2rem,10vw,2.8rem)] font-normal leading-[0.94] tracking-[-0.03em] text-[#f4f2ee] sm:mt-6 sm:text-[clamp(3rem,8vw,4.6rem)] lg:mt-5 lg:text-[clamp(3.7rem,5.5vw,5.4rem)] lg:leading-[0.91] lg:tracking-[-0.045em]`}
+                className={`${headingFont.className} hero-reveal hero-reveal-2 mt-7 w-full max-w-[46rem] break-words text-[clamp(1.9rem,9.2vw,2.55rem)] font-normal leading-[0.96] tracking-[-0.025em] text-[#f4f2ee] sm:mt-6 sm:text-[clamp(2.75rem,6.7vw,4.1rem)] lg:mt-5 lg:max-w-[44rem] lg:text-[clamp(3.15rem,4.6vw,4.7rem)] lg:leading-[0.93] lg:tracking-[-0.035em] xl:max-w-[48rem]`}
               >
-                <span className="block whitespace-nowrap">Next.js developer</span>
-                <span className="mt-[0.14em] block text-[0.82em] leading-[0.98] tracking-[-0.02em] sm:text-[0.9em] lg:mt-0 lg:text-[1em] lg:leading-[0.91] lg:tracking-[-0.045em]">
+                <span className="block">Next.js Developer</span>
+                <span className="mt-[0.14em] block text-[0.8em] leading-none tracking-[-0.015em] sm:text-[0.86em] lg:mt-[0.06em] lg:text-[0.88em] lg:leading-[0.98] lg:tracking-[-0.025em]">
                   <span className="block">focused on</span>
-                  <span className="block whitespace-nowrap text-[#a98f69]">
+                  <span className="block text-[#a98f69]">
                     AI-powered products.
                   </span>
                 </span>
