@@ -58,8 +58,50 @@ export const projects: Project[] = [
     ],
   },
   {
+  slug: "make-a-child-smile-initiative",
+  number: "02",
+  title: "Make A Child Smile Initiative",
+  category: "Nonprofit website",
+  summary:
+    "A donation-focused nonprofit website helping provide school uniforms to children while supporting local tailors in their communities.",
+  description:
+    "Designed and developed the digital platform for Make A Child Smile Initiative (MACSI), transforming its mission into an engaging online experience that communicates impact, builds donor trust and guides supporters toward funding school uniforms for children in need.",
+  role: "Web Designer & Developer",
+  year: "2026",
+  duration: "Ongoing",
+  website: "https://macsi.vercel.app",
+  coverImage: "/projects/macsi.png",
+  technologies: [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Framer Motion",
+  ],
+  challenge:
+    "MACSI needed more than a basic charity website. The platform had to communicate an emotional mission with credibility, explain exactly how donations create impact and make it easy for supporters to take action without introducing a complex payment system.",
+  solution:
+    "I designed and developed a story-driven, responsive website that combines strong visual storytelling, impact statistics, campaign information, local-tailor stories and clear donation calls to action. I also created a streamlined WhatsApp donation journey that lets supporters choose how many uniforms they want to fund and continue directly with the MACSI team.",
+  contributions: [
+    "Designed and developed the complete website experience.",
+    "Created a visual design system around dignity, education and community impact.",
+    "Built an interactive donation journey with predefined uniform funding amounts.",
+    "Integrated WhatsApp-based donation calls to action across key sections of the website.",
+    "Developed animated impact counters, carousels, testimonials and scroll-based interactions.",
+    "Built responsive and accessible layouts across desktop and mobile devices.",
+    "Structured the website around MACSI's mission, impact, campaigns, transparency and donation process.",
+    "Optimized the site for performance, accessibility and search visibility.",
+  ],
+  results: [
+    "Established a professional digital presence for the initiative.",
+    "Created a clear donation journey around the ₦4,500 cost of providing one school uniform.",
+    "Made MACSI's impact of 100+ children supported and 12+ schools reached clearly visible to potential donors.",
+    "Connected the initiative's support for children with its additional economic impact on local tailors.",
+    "Created a scalable platform for future campaigns, impact stories, photographs and fundraising initiatives.",
+  ],
+},
+  {
     slug: "ese-fabrics",
-    number: "02",
+    number: "03",
     title: "Ese Fabrics",
     category: "E-commerce platform",
     summary:
@@ -95,38 +137,7 @@ export const projects: Project[] = [
       "Created a fast and responsive shopping experience.",
     ],
   },
-  {
-    slug: "winners-foundation-school",
-    number: "03",
-    title: "Winners Foundation School",
-    category: "School website",
-    summary:
-      "A modern school website designed to improve communication, admissions and the institution's online presence.",
-    description:
-      "Designed and developed the official website for Winners Foundation School, providing prospective parents and students with an engaging experience while making school information easily accessible.",
-    role: "Part-Time Web Developer",
-    year: "2022",
-    duration: "Ongoing",
-    website: "https://winnersfoundationschools.com",
-    coverImage: "/projects/winners-school.png",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB"],
-    challenge:
-      "The school required a modern website that reflected its brand while making admissions, school information and communication more accessible.",
-    solution:
-      "I built a responsive website with modern UI, improved navigation and a scalable content structure to support future growth.",
-    contributions: [
-      "Designed and developed the complete website.",
-      "Built responsive layouts across all screen sizes.",
-      "Created admissions and school information pages.",
-      "Optimized performance and SEO.",
-      "Provide ongoing maintenance and feature updates.",
-    ],
-    results: [
-      "Established a professional online presence.",
-      "Improved accessibility for parents and prospective students.",
-      "Created a maintainable platform for future enhancements.",
-    ],
-  },
+  
 ];
 
 export function getProjectBySlug(slug: string) {

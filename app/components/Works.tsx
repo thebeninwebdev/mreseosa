@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { bodyFont, headingFont } from "@/app/fonts";
+import { projects as projectData } from "@/data/projects";
 
 type ProjectCategory = "Web Apps" | "Desktop" | "AI";
 
@@ -12,44 +13,19 @@ type Project = {
   href: string;
   category: ProjectCategory;
   technologies: string[];
-  liveUrl: string
+  liveUrl?: string;
 };
 
-const projects: Project[] = [
-  {
-    number: "01",
-    title: "SBP Hotel",
-    description:
-      "Luxury hotel website with a premium booking experience, responsive design and elegant user interface.",
-    image: "/projects/sbp-hotel.png",
-    href: "/projects/sbp-hotel",
-    category: "Web Apps",
-    liveUrl: "https://sbphotel.com",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB"],
-  },
-  {
-    number: "02",
-    title: "Ese Fabrics",
-    description:
-      "Modern e-commerce platform with secure payments, inventory management and a seamless shopping experience.",
-    image: "/projects/ese-fabrics.png",
-    href: "/projects/ese-fabrics",
-    category: "Web Apps",
-    liveUrl: "https://esefabrics.vercel.app",
-    technologies: ["Next.js", "Paystack", "Tailwind CSS", "Cloudinary"],
-  },
-  {
-    number: "03",
-    title: "Winners Foundation School",
-    description:
-      "Modern school website focused on admissions, communication and an engaging experience for parents and students.",
-    image: "/projects/winners-school.png",
-    href: "/projects/winners-foundation-school",
-    category: "Web Apps",
-    liveUrl: "https://winnersfoundationschools.com",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB"],
-  },
-];
+const projects: Project[] = projectData.map((project) => ({
+  number: project.number,
+  title: project.title,
+  description: project.summary,
+  image: project.coverImage,
+  href: `/projects/${project.slug}`,
+  category: "Web Apps",
+  liveUrl: project.website,
+  technologies: project.technologies,
+}));
 function ArrowRightIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
