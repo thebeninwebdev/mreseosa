@@ -98,7 +98,7 @@ export default function PortfolioMenu() {
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="relative mx-auto flex h-12 w-full max-w-[90rem] items-center justify-center px-4 lg:h-[4.5rem] lg:px-8">
+        <div className="menu-trigger-row relative mx-auto flex h-12 w-full max-w-[90rem] items-center justify-center px-4 lg:h-[4.5rem] lg:px-8">
           <nav className="hidden items-stretch self-stretch lg:flex" aria-label="Desktop navigation">
             {menuLinks.map((item) => (
               <Link
@@ -132,6 +132,14 @@ export default function PortfolioMenu() {
             {isOpen ? "Close" : "Menu"}
           </button>
         </div>
+        <noscript>
+          <style>{`@media (max-width: 63.999rem) { .menu-trigger-row { display: none; } }`}</style>
+          <nav aria-label="Mobile navigation" className="flex min-h-12 flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 py-3 text-xs text-white/60 lg:hidden">
+            {menuLinks.map((item) => (
+              <a key={item.href} href={item.href}>{item.label}</a>
+            ))}
+          </nav>
+        </noscript>
       </header>
 
       {/* Full-screen menu */}

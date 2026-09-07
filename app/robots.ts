@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = "https://mreseosa.space";
+import { siteUrl } from "@/data/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {

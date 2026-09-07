@@ -52,11 +52,6 @@ section[id] {
   }
 }
 
-main > section:not(#home) {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 1000px;
-}
-
 /* Lightweight first-view motion keeps the hero paint-visible for a fast LCP. */
 @keyframes hero-reveal {
   from {

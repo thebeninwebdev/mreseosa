@@ -2,36 +2,20 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 
-const siteUrl = "https://mreseosa.space";
+import { siteDescription, siteTitle, siteUrl } from "@/data/site";
 const isVercelDeployment = process.env.VERCEL === "1";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
-    default: "Eseosa Osayi | Full-Stack Web Developer",
+    default: siteTitle,
     template: "%s | Eseosa Osayi",
   },
 
-  description:
-    "Portfolio of Eseosa Osayi, a Nigerian full-stack developer building production-ready Next.js products and AI-powered web applications.",
+  description: siteDescription,
 
-  keywords: [
-    "Eseosa Osayi",
-    "Mr Eseosa",
-    "Full Stack Developer",
-    "Web Developer",
-    "Next.js Developer",
-    "React Developer",
-    "TypeScript",
-    "MongoDB",
-    "Node.js",
-    "Frontend Developer",
-    "Portfolio",
-    "Nigeria",
-  ],
-
-  authors: [{ name: "Eseosa Osayi" }],
+  authors: [{ name: "Eseosa Osayi", url: siteUrl }],
   creator: "Eseosa Osayi",
   publisher: "Eseosa Osayi",
 
@@ -45,16 +29,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Eseosa Osayi Portfolio",
-    title: "Eseosa Osayi | Full-Stack Web Developer",
-    description:
-      "Building high-performance, scalable and thoughtfully designed web applications with Next.js, TypeScript and modern web technologies.",
+    title: siteTitle,
+    description: siteDescription,
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Eseosa Osayi | Full-Stack Web Developer",
-    description:
-      "Building modern web applications with Next.js, React, TypeScript and Node.js.",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/opengraph-image"],
   },
 
   alternates: {

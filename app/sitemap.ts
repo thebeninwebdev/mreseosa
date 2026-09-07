@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { projects } from "@/data/projects";
 
-const siteUrl = "https://mreseosa.space";
+import { siteUrl } from "@/data/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

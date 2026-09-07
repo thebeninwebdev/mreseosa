@@ -5,6 +5,7 @@ import { useEffect } from "react";
 export default function ScrollReveals() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!("IntersectionObserver" in window) || !("animate" in Element.prototype)) return;
 
     const sectionContent = Array.from(
       document.querySelectorAll<HTMLElement>(
@@ -18,13 +19,8 @@ export default function ScrollReveals() {
     const revealed = new WeakSet<HTMLElement>();
     const runningAnimations = new Set<Animation>();
 
-    targets.forEach((target) => {
-      const isWork = target.matches("#projects [data-work-reveal]");
-      target.style.opacity = "0";
-      target.style.transform = isWork
-        ? "translateY(32px) scale(0.99)"
-        : "translateY(24px)";
-    });
+    // Keep the underlying HTML visible. Only an active, finite animation
+    // changes presentation, so missing observers or cancelled motion fail open.
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -51,15 +47,12 @@ export default function ScrollReveals() {
             {
               duration: 700,
               easing: "cubic-bezier(0.22, 1, 0.36, 1)",
-              fill: "forwards",
             },
           );
 
           runningAnimations.add(animation);
           animation.finished
             .then(() => {
-              element.style.removeProperty("opacity");
-              element.style.removeProperty("transform");
               animation.cancel();
               runningAnimations.delete(animation);
             })
@@ -68,7 +61,7 @@ export default function ScrollReveals() {
             });
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0, rootMargin: "0px 0px 8% 0px" },
     );
 
     targets.forEach((target) => observer.observe(target));
@@ -76,10 +69,6 @@ export default function ScrollReveals() {
     return () => {
       observer.disconnect();
       runningAnimations.forEach((animation) => animation.cancel());
-      targets.forEach((target) => {
-        target.style.removeProperty("opacity");
-        target.style.removeProperty("transform");
-      });
     };
   }, []);
 

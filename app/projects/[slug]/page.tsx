@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { headingFont, bodyFont } from "@/app/fonts";
 import { getProjectBySlug, projects } from "@/data/projects";
 
-const siteUrl = "https://mreseosa.space";
+import { siteUrl } from "@/data/site";
 
 type ProjectPageProps = {
   params: Promise<{

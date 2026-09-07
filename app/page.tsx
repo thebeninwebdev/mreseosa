@@ -7,6 +7,19 @@ import PortfolioSections from "./components/PortfolioSections";
 import BackToTop from "./components/BackToTop";
 import ResumeViewer from "./components/ResumeViewer";
 import ScrollReveals from "./components/ScrollReveals";
+import { siteUrl } from "@/data/site";
+
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Eseosa Osayi",
+  url: siteUrl,
+  jobTitle: "Full-Stack Software Engineer",
+  sameAs: [
+    "https://github.com/thebeninwebdev",
+    "https://linkedin.com/in/eseosa-osayi-23a9422b2",
+  ],
+};
 
 function ArrowRightIcon() {
   return (
@@ -31,6 +44,12 @@ const trustSignals = [
 export default function HomePage() {
   return (
     <main className={`${bodyFont.className} min-h-screen bg-[#090909] text-white`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(person).replace(/</g, "\\u003c"),
+        }}
+      />
       <PortfolioMenu />
       <ScrollReveals />
 
