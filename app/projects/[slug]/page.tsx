@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ProjectWalkthrough from "@/app/components/ProjectWalkthrough";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -46,7 +47,7 @@ export async function generateMetadata({
       description: project.summary,
       images: [
         {
-          url: project.coverImage,
+          url: project.coverImage ?? "/opengraph-image",
           alt: `${project.title} project preview`,
         },
       ],
@@ -55,7 +56,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${project.title} | Eseosa Osayi`,
       description: project.summary,
-      images: [project.coverImage],
+      images: [project.coverImage ?? "/opengraph-image"],
     },
   };
 }
@@ -130,7 +131,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </p>
 
           <h1
-            className={`${headingFont.className} mt-5 max-w-5xl text-[4rem] font-medium leading-[0.9] tracking-[-0.05em] text-[#f5f5f2] sm:text-7xl lg:text-[7rem]`}
+            className={`${headingFont.className} mt-5 max-w-5xl text-[clamp(2.5rem,10vw,4rem)] break-words font-medium leading-[0.9] tracking-[-0.05em] text-[#f5f5f2] sm:text-7xl lg:text-[7rem]`}
           >
             {project.title}
           </h1>
@@ -141,21 +142,43 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
           <div className="mt-12 grid gap-8 border-y border-white/10 py-7 sm:grid-cols-2 lg:grid-cols-4">
             <ProjectDetail label="Role" value={project.role} />
-            <ProjectDetail label="Year" value={project.year} />
-            <ProjectDetail label="Duration" value={project.duration} />
+            {project.year && (
+              <ProjectDetail label="Year" value={project.year} />
+            )}
+            {project.duration && (
+              <ProjectDetail label="Period" value={project.duration} />
+            )}
             <ProjectDetail label="Type" value={project.category} />
           </div>
 
-          <div className="relative mt-12 aspect-[16/10] overflow-hidden rounded-sm border border-white/10 bg-neutral-950 sm:mt-16">
-            <Image
-              src={project.coverImage}
-              alt={`${project.title} product preview`}
-              fill
-              preload
-              sizes="(max-width: 1280px) 100vw, 1280px"
-              className="object-cover"
-            />
-          </div>
+          {project.status && (
+            <p className="mt-6 max-w-3xl text-sm leading-7 text-[#B7A98A]">
+              {project.status}
+            </p>
+          )}
+          {project.coverImage ? (
+            <figure>
+              <div className="relative mt-12 aspect-[16/10] overflow-hidden rounded-sm border border-white/10 bg-neutral-950 sm:mt-16">
+                <Image
+                  src={project.coverImage}
+                  alt={`${project.title} product preview`}
+                  fill
+                  preload
+                  sizes="(max-width: 1280px) 100vw, 1280px"
+                  className="object-cover"
+                />
+              </div>
+              {project.imageCaption && (
+                <figcaption className="mt-4 text-xs leading-6 text-white/50">
+                  {project.imageCaption}
+                </figcaption>
+              )}
+            </figure>
+          ) : (
+            <div className="mt-12 border border-white/10">
+              <ProjectWalkthrough steps={project.walkthrough ?? []} />
+            </div>
+          )}
         </div>
       </section>
 
@@ -182,7 +205,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </ul>
       </CaseStudySection>
 
-      <CaseStudySection number="05" label="Technology" title="Tools used">
+      {project.coverImage && project.walkthrough && (
+        <CaseStudySection number="05" label="Walkthrough" title="How it works">
+          <ProjectWalkthrough steps={project.walkthrough} />
+        </CaseStudySection>
+      )}
+
+      <CaseStudySection number="06" label="Technology" title="Tools used">
         <div className="flex flex-wrap gap-3">
           {project.technologies.map((technology) => (
             <span
@@ -195,7 +224,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
       </CaseStudySection>
 
-      <CaseStudySection number="06" label="Outcome" title="The result">
+      <CaseStudySection number="07" label="Outcome" title="The result">
         <ul className="space-y-5">
           {project.results.map((result) => (
             <li key={result} className="flex items-start gap-4">
@@ -212,7 +241,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             rel="noreferrer"
             className="group mt-10 inline-flex min-h-14 items-center gap-8 rounded-sm border border-white/30 px-6 text-sm text-white transition hover:border-white"
           >
-            <span>Visit live product</span>
+            <span>{project.websiteLabel ?? "Visit website"}</span>
 
             <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
               <ArrowUpRightIcon />

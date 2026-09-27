@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title description">
+  <title id="title">Success Chemist</title>
+  <desc id="description">Project cover featuring the pill logo from the Success Chemist website. Brand artwork, not a product screenshot.</desc>
+  <defs>
+    <radialGradient id="background" cx="50%" cy="0%" r="90%">
+      <stop stop-color="#bbe6c4"/>
+      <stop offset="1" stop-color="#f7faf7"/>
+    </radialGradient>
+  </defs>
+  <path fill="url(#background)" d="M0 0h1440v900H0z"/>
+  <rect x="636" y="245" width="168" height="168" rx="40" fill="#176b3a"/>
+  <svg x="672" y="281" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="rotate(-35 12 12)">
+      <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 0 0 7 7Z"/>
+      <path d="m8.5 8.5 7 7"/>
+    </g>
+  </svg>
+  <text x="720" y="513" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="700" fill="#173b24">Success Chemist</text>
+  <text x="720" y="575" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#5d7163">Medicine search for pharmacy staff</text>
+  <text x="720" y="797" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="19" letter-spacing="3" fill="#637568">PROJECT COVER · BRAND ARTWORK</text>
+</svg>

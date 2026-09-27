@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { bodyFont, headingFont } from "@/app/fonts";
-import { projects as projectData } from "@/data/projects";
+import { featuredProjects as projectData, moreProjects } from "@/data/projects";
+import ProjectWalkthrough from "./ProjectWalkthrough";
 
 type ProjectCategory = "Web Apps" | "Desktop" | "AI";
 
@@ -9,7 +10,10 @@ type Project = {
   number: string;
   title: string;
   description: string;
-  image: string;
+  image?: string;
+  status?: string;
+  walkthrough: string[];
+  liveLabel?: string;
   href: string;
   category: ProjectCategory;
   technologies: string[];
@@ -18,6 +22,9 @@ type Project = {
 
 const projects: Project[] = projectData.map((project) => ({
   number: project.number,
+  status: project.status,
+  walkthrough: project.walkthrough ?? [],
+  liveLabel: project.websiteLabel,
   title: project.title,
   description: project.summary,
   image: project.coverImage,
@@ -44,7 +51,10 @@ function ProjectCard({ project }: { project: Project }) {
   const visibleTechnologies = project.technologies.slice(0, 3);
 
   return (
-    <article data-work-reveal className="group overflow-hidden rounded-sm border border-white/10 bg-white/[0.015] transition duration-500 hover:-translate-y-1 hover:border-white/20">
+    <article
+      data-work-reveal
+      className="group overflow-hidden rounded-sm border border-white/10 bg-white/[0.015] transition duration-500 hover:-translate-y-1 hover:border-white/20"
+    >
       <div className="grid lg:grid-cols-[0.82fr_1.18fr]">
         {/* Content */}
         <div className="order-2 flex flex-col px-6 py-7 sm:px-8 sm:py-9 lg:order-1 lg:min-h-[390px] lg:px-10 lg:py-10">
@@ -58,7 +68,7 @@ function ProjectCard({ project }: { project: Project }) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Visit ${project.title} live`}
+                aria-label={`${project.title}: ${project.liveLabel ?? "Visit website"}`}
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/60 transition-all duration-300 hover:border-[#B7A98A] hover:bg-[#B7A98A]/10 hover:text-[#B7A98A]"
               >
                 <ExternalLinkIcon />
@@ -75,6 +85,12 @@ function ProjectCard({ project }: { project: Project }) {
           <p className="mt-5 max-w-md text-sm leading-7 text-white/60 sm:text-base sm:leading-8">
             {project.description}
           </p>
+
+          {project.status && (
+            <p className="mt-4 text-xs leading-6 text-[#B7A98A]">
+              {project.status}
+            </p>
+          )}
 
           <div className="mt-6 flex flex-wrap gap-2">
             {visibleTechnologies.map((technology) => (
@@ -111,14 +127,18 @@ function ProjectCard({ project }: { project: Project }) {
           className="order-1 block overflow-hidden border-b border-white/10 lg:order-2 lg:border-b-0 lg:border-l"
         >
           <div className="relative aspect-[16/10] h-full min-h-[240px] overflow-hidden bg-neutral-950 sm:min-h-[320px] lg:aspect-auto lg:min-h-[390px]">
-            <Image
-              src={project.image}
-              alt={`${project.title} project preview`}
-              fill
-              sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 4rem), (max-width: 1440px) 55vw, 740px"
-              quality={60}
-              className="object-cover transition duration-700 group-hover:scale-[1.025]"
-            />
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={`${project.title} project preview`}
+                fill
+                sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 4rem), (max-width: 1440px) 55vw, 740px"
+                quality={60}
+                className="object-cover transition duration-700 group-hover:scale-[1.025]"
+              />
+            ) : (
+              <ProjectWalkthrough steps={project.walkthrough} />
+            )}
 
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
           </div>
@@ -130,12 +150,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 function ExternalLinkIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      className="h-5 w-5"
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
       <path
         d="M7 17L17 7"
         stroke="currentColor"
@@ -151,11 +166,9 @@ function ExternalLinkIcon() {
       />
     </svg>
   );
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }
-
+}
 
 export default function Works() {
-
   return (
     <section
       id="projects"
@@ -168,8 +181,8 @@ export default function Works() {
           </h2>
 
           <p className="mt-6 max-w-xl text-sm leading-7 text-white/60 sm:text-base sm:leading-8">
-            A selection of products I&apos;ve designed and built with a focus on
-            performance, usability and real-world impact.
+            Selected work across customer interfaces, operational workflows and
+            AI-assisted search.
           </p>
         </header>
 
@@ -179,19 +192,53 @@ export default function Works() {
           ))}
         </div>
 
-        <div data-work-reveal className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] px-6 py-7 sm:px-9 sm:py-9">
+        <div className="mt-12">
+          <h3 className="text-xs uppercase tracking-[0.22em] text-[#B7A98A]">
+            More projects
+          </h3>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2">
+            {moreProjects.map((project) => (
+              <article
+                key={project.slug}
+                className="border border-white/10 p-6"
+              >
+                <h4 className="text-2xl text-[#f5f5f2]">{project.title}</h4>
+                <p className="mt-3 text-sm leading-7 text-white/60">
+                  {project.summary}
+                </p>
+                <div className="mt-5 flex flex-wrap gap-6 text-sm text-[#B7A98A]">
+                  <Link href={`/projects/${project.slug}`}>
+                    View case study
+                    <span className="sr-only">: {project.title}</span>
+                  </Link>
+                  {project.website && (
+                    <a href={project.website} target="_blank" rel="noreferrer">
+                      Visit website
+                      <span className="sr-only">: {project.title}</span> ↗
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div
+          data-work-reveal
+          className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] px-6 py-7 sm:px-9 sm:py-9"
+        >
           <div className="flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-start gap-4">
-
               <div>
                 <h3
                   className={`${headingFont.className} text-3xl font-medium tracking-[-0.025em] text-[#f5f5f2] sm:text-4xl`}
                 >
-                  Have a project in mind?
+                  Building your engineering team?
                 </h3>
 
                 <p className="mt-2 text-sm leading-7 text-white/55">
-                  Let&apos;s build something impactful together.
+                  I welcome software engineering opportunities and project
+                  enquiries.
                 </p>
               </div>
             </div>

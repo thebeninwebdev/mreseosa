@@ -36,14 +36,18 @@ function ArrowRightIcon() {
 }
 
 const trustSignals = [
-  { label: "4+ Years", detail: "Experience" },
+  { label: "2 years", detail: "Experience building web applications" },
   { label: "GMT+1", detail: "West Africa Time" },
   { label: "Open to Remote", detail: "Worldwide" },
 ];
 
 export default function HomePage() {
   return (
-    <main className={`${bodyFont.className} min-h-screen bg-[#090909] text-white`}>
+    <main
+      id="top"
+      tabIndex={-1}
+      className={`${bodyFont.className} min-h-screen bg-[#090909] text-white`}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -61,19 +65,21 @@ export default function HomePage() {
           <div className="grid flex-1 items-center gap-10 lg:grid-cols-[1.12fr_0.88fr] lg:gap-8">
             <div className="relative z-10 flex flex-col lg:pb-12">
               <div className="hero-reveal hero-reveal-1 flex items-center gap-4 lg:hidden">
-                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-[#c7a66d]/30 bg-neutral-800">
+                <div className="relative h-36 w-28 shrink-0 overflow-hidden rounded-lg border border-[#c7a66d]/30 bg-neutral-800 min-[390px]:h-40 min-[390px]:w-32 sm:h-48 sm:w-40">
                   <Image
                     src="/profile.webp"
                     alt="Eseosa Osayi"
                     fill
-                    sizes="64px"
-                    quality={65}
+                    sizes="(min-width: 640px) 160px, (min-width: 390px) 128px, 112px"
+                    quality={75}
                     loading="eager"
                     className="object-cover"
                   />
                 </div>
-                <div>
-                  <p className="text-[1.35rem] font-medium tracking-tight">Eseosa Osayi</p>
+                <div className="min-w-0">
+                  <p className="text-[1.35rem] font-medium tracking-tight">
+                    Eseosa Osayi
+                  </p>
                   <p className="mt-1 text-[0.7rem] tracking-[0.04em] text-white/55">
                     Full-Stack Engineer · Remote
                   </p>
@@ -81,24 +87,23 @@ export default function HomePage() {
               </div>
 
               <p className="hero-reveal hero-reveal-1 hidden text-xs font-medium uppercase tracking-[0.16em] text-[#c7a66d] lg:block lg:text-sm">
-                Full-Stack Engineer <span className="px-1 text-[#a98f69]">•</span> Remote
+                Full-Stack Engineer{" "}
+                <span className="px-1 text-[#a98f69]">•</span> Remote
               </p>
 
               <h1
                 className={`${headingFont.className} hero-reveal hero-reveal-2 mt-7 w-full max-w-[46rem] break-words text-[clamp(1.9rem,9.2vw,2.55rem)] font-normal leading-[0.96] tracking-[-0.025em] text-[#f4f2ee] sm:mt-6 sm:text-[clamp(2.75rem,6.7vw,4.1rem)] lg:mt-5 lg:max-w-[44rem] lg:text-[clamp(3.15rem,4.6vw,4.7rem)] lg:leading-[0.93] lg:tracking-[-0.035em] xl:max-w-[48rem]`}
               >
-                <span className="block">Next.js Developer</span>
+                <span className="block">Full-stack engineer</span>
                 <span className="mt-[0.14em] block text-[0.8em] leading-none tracking-[-0.015em] sm:text-[0.86em] lg:mt-[0.06em] lg:text-[0.88em] lg:leading-[0.98] lg:tracking-[-0.025em]">
-                  <span className="block">focused on</span>
-                  <span className="block text-[#a98f69]">
-                    AI-powered products.
-                  </span>
+                  <span className="block">building useful</span>
+                  <span className="block text-[#a98f69]">web products.</span>
                 </span>
               </h1>
 
               <p className="hero-reveal hero-reveal-3 mt-6 max-w-xl text-sm leading-7 text-white/60 sm:text-base sm:leading-8 lg:mt-5 lg:text-[1.05rem]">
-                Building production-grade software with Next.js,
-                <br className="hidden sm:block" /> Node.js and AI integrations.
+                I work across interfaces, backend systems, and AI-assisted
+                features to turn real needs into software people can use.
               </p>
 
               <div className="hero-reveal hero-reveal-4 mt-7 grid grid-cols-3 gap-2.5 sm:flex sm:flex-wrap sm:gap-3 lg:mt-6">
@@ -130,6 +135,22 @@ export default function HomePage() {
                 </Link>
                 <ResumeViewer />
               </div>
+              <div className="hero-reveal hero-reveal-5 mt-6 flex gap-7 text-sm text-white/65">
+                <Link
+                  href="#contact"
+                  className="py-2 transition hover:text-[#B7A98A]"
+                >
+                  Contact me
+                </Link>
+                <a
+                  href="https://github.com/thebeninwebdev"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="py-2 transition hover:text-[#B7A98A]"
+                >
+                  GitHub ↗
+                </a>
+              </div>
             </div>
 
             <div className="hero-portrait hero-reveal hero-reveal-3 relative hidden h-[min(66dvh,38rem)] min-h-[30rem] self-center lg:block">
@@ -148,7 +169,6 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-
         </div>
       </section>
 

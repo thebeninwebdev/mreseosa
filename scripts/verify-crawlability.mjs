@@ -36,11 +36,11 @@ for (const agent of agents) {
   const html = curl("/", agent);
   const body = bodyHTML(html);
   const phrases = [
-    "Eseosa Osayi", "Full-Stack Engineer", "Next.js Developer",
-    "AI-powered products.", "Building production-grade software with Next.js,",
+    "Eseosa Osayi", "Full-Stack Engineer", "Full-stack engineer",
+    "web products.", "I work across interfaces, backend systems, and AI-assisted features",
     "Engineering with purpose.", "Where I have built.", "SwiftDU",
     "Tools I work with.", "Next.js", "React", "TypeScript", "Node.js", "MongoDB",
-    "Let's build something meaningful.", "Send me an email",
+    "Let's talk about your team.", "Send me an email",
     ...projects.flatMap((project) => [project.title, project.summary]),
   ];
   phrases.forEach((phrase) => includes(text(body), phrase));
@@ -73,7 +73,7 @@ for (const agent of agents) {
     assert.equal(meta(page, "description"), project.summary);
     assert.equal(meta(page, "og:url"), `${siteUrl}${path}`);
     assert.equal(decode(page.match(/<title>(.*?)<\/title>/)[1]), `${project.title} | Eseosa Osayi`);
-    assert.equal(meta(page, "twitter:image"), `${siteUrl}${project.coverImage}`);
+    assert.equal(meta(page, "twitter:image"), `${siteUrl}${project.coverImage ?? "/opengraph-image"}`);
     console.log(`PASS ${path}: all case-study content and unique metadata`);
   }
 }
@@ -86,4 +86,4 @@ assert.ok(!robots.includes("Disallow: /"));
 const sitemap = curl("/sitemap.xml");
 const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
 assert.deepEqual(urls, [siteUrl, ...projects.map((project) => `${siteUrl}/projects/${project.slug}`)]);
-console.log("PASS robots.txt and sitemap.xml: public crawling and exactly four real portfolio routes");
+console.log(`PASS robots.txt and sitemap.xml: public crawling and ${projects.length} project routes`);

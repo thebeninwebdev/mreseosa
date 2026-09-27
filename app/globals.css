@@ -1,4 +1,8 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+
+/* Only application sources should contribute utilities, not saved HTML or audit files. */
+@source "./";
+@source "../data";
 
 :root {
   --background: #ffffff;
